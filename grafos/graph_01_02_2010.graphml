@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.name="signal" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="BUDAPEST">
+      <data key="d0">56</data>
+    </node>
+    <node id="BARANYA">
+      <data key="d0">50</data>
+    </node>
+    <node id="BACS">
+      <data key="d0">26</data>
+    </node>
+    <node id="BEKES">
+      <data key="d0">12</data>
+    </node>
+    <node id="BORSOD">
+      <data key="d0">59</data>
+    </node>
+    <node id="CSONGRAD">
+      <data key="d0">4</data>
+    </node>
+    <node id="FEJER">
+      <data key="d0">46</data>
+    </node>
+    <node id="GYOR">
+      <data key="d0">43</data>
+    </node>
+    <node id="HAJDU">
+      <data key="d0">31</data>
+    </node>
+    <node id="HEVES">
+      <data key="d0">40</data>
+    </node>
+    <node id="JASZ">
+      <data key="d0">54</data>
+    </node>
+    <node id="KOMAROM">
+      <data key="d0">22</data>
+    </node>
+    <node id="NOGRAD">
+      <data key="d0">12</data>
+    </node>
+    <node id="PEST">
+      <data key="d0">99</data>
+    </node>
+    <node id="SOMOGY">
+      <data key="d0">59</data>
+    </node>
+    <node id="SZABOLCS">
+      <data key="d0">22</data>
+    </node>
+    <node id="TOLNA">
+      <data key="d0">15</data>
+    </node>
+    <node id="VAS">
+      <data key="d0">35</data>
+    </node>
+    <node id="VESZPREM">
+      <data key="d0">43</data>
+    </node>
+    <node id="ZALA">
+      <data key="d0">2</data>
+    </node>
+    <edge source="BUDAPEST" target="PEST" />
+    <edge source="BUDAPEST" target="BUDAPEST" />
+    <edge source="BARANYA" target="BACS" />
+    <edge source="BARANYA" target="BARANYA" />
+    <edge source="BARANYA" target="TOLNA" />
+    <edge source="BARANYA" target="SOMOGY" />
+    <edge source="BACS" target="JASZ" />
+    <edge source="BACS" target="BACS" />
+    <edge source="BACS" target="CSONGRAD" />
+    <edge source="BACS" target="PEST" />
+    <edge source="BACS" target="FEJER" />
+    <edge source="BACS" target="TOLNA" />
+    <edge source="BEKES" target="HAJDU" />
+    <edge source="BEKES" target="BEKES" />
+    <edge source="BEKES" target="JASZ" />
+    <edge source="BEKES" target="CSONGRAD" />
+    <edge source="BORSOD" target="HEVES" />
+    <edge source="BORSOD" target="SZABOLCS" />
+    <edge source="BORSOD" target="HAJDU" />
+    <edge source="BORSOD" target="BORSOD" />
+    <edge source="BORSOD" target="NOGRAD" />
+    <edge source="BORSOD" target="JASZ" />
+    <edge source="CSONGRAD" target="JASZ" />
+    <edge source="CSONGRAD" target="CSONGRAD" />
+    <edge source="FEJER" target="FEJER" />
+    <edge source="FEJER" target="SOMOGY" />
+    <edge source="FEJER" target="KOMAROM" />
+    <edge source="FEJER" target="TOLNA" />
+    <edge source="FEJER" target="PEST" />
+    <edge source="FEJER" target="VESZPREM" />
+    <edge source="GYOR" target="VESZPREM" />
+    <edge source="GYOR" target="KOMAROM" />
+    <edge source="GYOR" target="GYOR" />
+    <edge source="GYOR" target="VAS" />
+    <edge source="HAJDU" target="JASZ" />
+    <edge source="HAJDU" target="HAJDU" />
+    <edge source="HAJDU" target="SZABOLCS" />
+    <edge source="HEVES" target="NOGRAD" />
+    <edge source="HEVES" target="JASZ" />
+    <edge source="HEVES" target="PEST" />
+    <edge source="HEVES" target="HEVES" />
+    <edge source="JASZ" target="JASZ" />
+    <edge source="JASZ" target="PEST" />
+    <edge source="KOMAROM" target="KOMAROM" />
+    <edge source="KOMAROM" target="VESZPREM" />
+    <edge source="KOMAROM" target="PEST" />
+    <edge source="NOGRAD" target="PEST" />
+    <edge source="NOGRAD" target="NOGRAD" />
+    <edge source="PEST" target="PEST" />
+    <edge source="SOMOGY" target="TOLNA" />
+    <edge source="SOMOGY" target="VESZPREM" />
+    <edge source="SOMOGY" target="ZALA" />
+    <edge source="SOMOGY" target="SOMOGY" />
+    <edge source="SZABOLCS" target="SZABOLCS" />
+    <edge source="TOLNA" target="TOLNA" />
+    <edge source="VAS" target="VAS" />
+    <edge source="VAS" target="ZALA" />
+    <edge source="VAS" target="VESZPREM" />
+    <edge source="VESZPREM" target="ZALA" />
+    <edge source="VESZPREM" target="VESZPREM" />
+    <edge source="ZALA" target="ZALA" />
+  </graph>
+</graphml>
