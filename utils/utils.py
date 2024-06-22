@@ -3,6 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import pickle
 import os
+from datetime import datetime
 
 def get_graph_by_date(date):
     """
@@ -75,7 +76,7 @@ def get_existing_graph_names(directory="grafos"):
                       O padrão é "grafos".
     
     Retorna:
-    - list: Lista de nomes de arquivos GraphML existentes (sem o caminho do diretório).
+    - list: Lista de nomes de arquivos GraphML existentes, ordenada pelo dia (do mais velho para o mais novo).
     """
     graphml_files = []
     
@@ -85,9 +86,22 @@ def get_existing_graph_names(directory="grafos"):
     # Filtra os arquivos com base na convenção de nome de arquivo GraphML
     for file in files:
         if file.startswith("graph_") and file.endswith(".graphml"):
-            graphml_files.append(file)
+            # Extrai a data do nome do arquivo
+            filename_without_extension = os.path.splitext(file)[0]  # remove a extensão .graphml
+            date_string = filename_without_extension.split("_")[1:]  # pega a parte da data dd_mm_yyyy
+            formatted_date = "_".join(date_string)  # junta de volta para formar dd_mm_yyyy
+            
+            # Converte a data para um objeto datetime para ordenação
+            date_obj = datetime.strptime(formatted_date, "%d_%m_%Y")
+            
+            # Adiciona o nome do arquivo e a data como tupla
+            graphml_files.append((file, date_obj))
     
-    return graphml_files
+    # Ordena os arquivos com base na data (do mais velho para o mais novo)
+    graphml_files.sort(key=lambda x: x[1])
+    
+    # Retorna apenas os nomes dos arquivos, sem a data
+    return [file[0] for file in graphml_files]
 
 def plot_graph_by_date(date):
     """
