@@ -161,3 +161,43 @@ def plot_graph_by_date(date):
     plt.title(f'Grafo para data: {date}')  # Título
     plt.axis('off')
     plt.show()  # Exibir o gráfico
+    
+
+def plot_custom_graph(G):
+    """
+    Plots a given networkx graph with custom settings.
+
+    Parameters:
+    - G (nx.Graph): Networkx graph object.
+
+    Displays:
+    - Plot of the provided graph with nodes colored based on 'signal' attribute.
+    """
+    plt.figure(figsize=(10, 8))  # Figure size
+    
+    pos = nx.spring_layout(G)  # Layout of the graph
+    
+    # Extracting signal values for node coloring
+    signal_values = [G.nodes[city]['signal'] for city in G.nodes()]
+    
+    # Normalization and colormap setup
+    norm = plt.Normalize(min(signal_values), max(signal_values))
+    cmap = plt.cm.plasma
+    
+    # Drawing nodes with color based on signal values
+    nx.draw_networkx_nodes(G, pos, node_size=500, node_color=signal_values, cmap=cmap, alpha=0.8)
+    
+    # Drawing edges
+    nx.draw_networkx_edges(G, pos, edgelist=G.edges(), width=1.0, alpha=0.5)
+    
+    # Drawing node labels
+    nx.draw_networkx_labels(G, pos, font_size=12, font_family='sans-serif')
+    
+    # Setting up colorbar
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=plt.gca(), label='Signal')
+    
+    plt.title('Custom Graph Plot')  # Title
+    plt.axis('off')  # Turn off axis
+    plt.show()  # Display the plot
