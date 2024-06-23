@@ -27,6 +27,25 @@ def get_graph_by_date(date):
     G = nx.read_graphml(graph_filename)
     return G
 
+def get_graph_by_name(filename):
+    """
+    Recupera o grafo correspondente a um nome de arquivo GraphML específico.
+    
+    Parâmetros:
+    - filename (str): Nome completo do arquivo GraphML a ser recuperado.
+    
+    Retorna:
+    - nx.Graph: Objeto de grafo correspondente ao arquivo fornecido.
+    
+    Lança:
+    - FileNotFoundError: Se o arquivo GraphML especificado não existir.
+    """
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Arquivo GraphML não encontrado: {filename}")
+    
+    G = nx.read_graphml(filename)
+    return G
+
 def save_graphs_to_files(df_pox, df_edges):
     """
     Constrói grafos a partir de dados de infectados por cidade e salva cada grafo em formato GraphML.
