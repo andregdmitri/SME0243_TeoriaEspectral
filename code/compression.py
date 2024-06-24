@@ -1,10 +1,9 @@
 # %%
-import pickle
-
-import gft
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
+
+from . import gft
 
 
 def signal(g: nx.Graph):
@@ -50,7 +49,7 @@ class Compressor:
 
         return 1 - bytes_comp / bytes_orig
 
-    def plot(self, graph: nx.Graph, sig: np.array):
+    def plot(self, sig: np.array):
 
         for edge in self.edges:
             plt.plot(
@@ -68,14 +67,17 @@ class Compressor:
             cmap="cividis",
         )
 
-    def plot_component(self, graph: nx.Graph, component: int):
+        plt.xticks([])
+        plt.yticks([])
+
+    def plot_component(self, component: int):
         sig = self.engine.U[:, component]
-        self.plot(graph, sig)
+        self.plot(sig)
 
     def plot_recons(self, graph):
         sig = signal(graph)
         rec_sig = self.engine.igft(self.engine.gft(sig, self.components))
-        self.plot(graph, rec_sig)
+        self.plot(rec_sig)
 
 
 def metrics(all_graphs):
@@ -88,17 +90,15 @@ def metrics(all_graphs):
         compression_rates.append(compressor.compression_rate(all_graphs))
 
     plt.plot(compression_rates[::-1], error_rates[::-1])
-    plt.xlabel("Compression Rate (%)")
-    plt.ylabel("Error Rate")
+    plt.xlabel("Taxa de Compressão (%)")
+    plt.ylabel(r"Erro Médio (% do desvio padrão)")
 
 
-def plot_recons(graph):
-    plt.figure(figsize=(10, 5))
-
-    compressor = Compressor(graph, 15)
+def plot_recons(graph, components):
+    compressor = Compressor(graph, components)
 
     plt.subplot(1, 2, 1)
-    compressor.plot(graph, signal(graph))
+    compressor.plot(signal(graph))
 
     plt.subplot(1, 2, 2)
     compressor.plot_recons(graph)
@@ -119,26 +119,11 @@ def history(all_graphs, components, node):
 
 
 def lineplot(all_graphs, node, components=[10, 15, 20]):
-    plt.figure(figsize=(12, 5))
-    sigs = history(all_graphs, 20, node)
-
     for component in components:
         plt.plot(
             history(all_graphs, component, node),
-            label=f"{component} components",
+            label=f"{component} componentes" if components != [20] else f"Nó {node}",
             linewidth=1,
         )
-        plt.legend()
-
-
-with open("../grafos/graph_list.pickle", "rb") as f:
-    all_graphs = pickle.load(f)
-
-metrics(all_graphs)
-plt.savefig("../imagens/metrics.png")
-
-plot_recons(all_graphs[30])
-plt.savefig("../imagens/recons.png")
-
-lineplot(all_graphs, 5)
-plt.savefig("../imagens/lineplot.png")
+        if len(components) > 1:
+            plt.legend()
